@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yezeed Mohammed - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+        }
+        
+        .about-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .skills-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-title i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li::before {
+            content: '▹';
+            color: #3498db;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+        }
+        
+        .project-desc {
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        
+        .project-link:hover {
+            color: #2c3e50;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 10px;
+            position: relative;
+            animation: modalFade 0.3s;
+        }
+        
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #e74c3c;
+        }
+        
+        .modal-media {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .modal-media img, .modal-media video {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .modal-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .detail-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="name">YEZEED MOHAMMED</h1>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">ABOUT</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    Motivated and innovative Mechatronics Engineer with hands-on experience in robotics, embedded systems, 3D printing and CNC machining. Skilled in 3D design, programming, and automation, with a strong passion for integrating hardware and software to develop efficient engineering solutions. Seeking opportunities to apply technical expertise to real-world projects in robotics, automation, and IoT.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">SKILLS</h2>
+            <div class="skills-categories">
+                <div class="skill-category">
+                    <h3 class="skill-title"><i class="fas fa-drafting-compass"></i> CAD & CAM</h3>
+                    <ul class="skill-list">
+                        <li>SolidWorks</li>
+                        <li>AutoCAD</li>
+                        <li>CATIA</li>
+                        <li>Shapr3D</li>
+                        <li>Blender</li>
+                    </ul>
+                    <p class="about-text">
+                        I am proficient in Computer-Aided Design (CAD) and Computer-Aided Manufacturing (CAM) tools, enabling me to transform concepts into detailed 2D drawings and 3D models, as well as prepare designs for prototyping and production.
+                    </p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="skill-title"><i class="fas fa-code"></i> PROGRAMMING & DEVELOPMENT</h3>
+                    <ul class="skill-list">
+                        <li>C</li>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>Frontend Web Development</li>
+                    </ul>
+                    <p class="about-text">
+                        I have a solid foundation in software development and programming, combining problem-solving skills with practical application in both standalone software and web-based solutions.
+                    </p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="skill-title"><i class="fas fa-microchip"></i> EMBEDDED SYSTEMS & ROBOTICS</h3>
+                    <p class="about-text">
+                        I specialize in designing and integrating embedded systems for automation, robotics, and real-time control applications.
+                    </p>
+                    <ul class="skill-list">
+                        <li>Arduino</li>
+                        <li>ESP32</li>
+                        <li>Microcontroller Programming</li>
+                        <li>Robotics System Integration</li>
+                        <li>CNC Machines & 3D Printers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">PROJECTS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="heart_2.jpg" alt="Heart Rate Monitoring Device">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Heart Rate Monitor</h3>
+                        <p class="project-desc">A portable device that monitors heart rate in real time and sends alerts for abnormal readings.</p>
+                        <a class="project-link" data-modal="modal1">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="RFID_Att_pic.jpg" alt="RFID Attendance System">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">RFID Attendance System</h3>
+                        <p class="project-desc">An automated attendance tracking system using RFID technology for efficient record keeping.</p>
+                        <a class="project-link" data-modal="modal2">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="Bionic_arm_Pic.jpg" alt="Bionic Arm">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Bionic Arm</h3>
+                        <p class="project-desc">A 5-degree-of-freedom robotic arm with precise control and human-like movement capabilities.</p>
+                        <a class="project-link" data-modal="modal3">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="SOLIDWORKS Premium 2023 SP0.1 - [LAMP DESIGN _] 01_07_2024 18_42_42.png" alt="3D Models">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">3D Models Portfolio</h3>
+                        <p class="project-desc">A collection of various 3D models and designs created for prototyping and production.</p>
+                        <a class="project-link" data-modal="modal4">View Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <h2>CONTACT</h2>
+                <p>Feel free to reach out for collaborations or just a friendly hello</p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/yezeed-mohammed-4025512b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/yezeed_mohd?utm_source=qr&igsh=dGduYmc4ejVjNDk4 "><i class="fab fa-instagram"></i></a>
+                <a href="yezeedmuhammedking@gmail.com"><i class="fab fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2023 Yezeed Mohammed. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-media">
+                <img src="heart_2.jpg" alt="Heart Rate Monitor Project">
+            </div>
+            <h2 class="modal-title">Real Time Heart Rate Monitoring Device ( CARDIO-NODE )</h2>
+            <p class="modal-description">
+                This project involved designing and building a portable heart rate monitoring device that tracks pulse in real-time and measure the electrical activities of the heart. The device uses optical (PPG) sensors to detect blood flow changes and electrode (ECG) sensor to monitor the cardiac activities of the heart then transmits data to a web based dashboard via WiFi. It features alert systems for abnormal heart rates and stores historical data for health tracking.
+            </p>
+            <div class="modal-details">
+                <div class="detail-item">
+                    <div class="detail-title">Technologies Used:</div>
+                    <div>ESP32, Pulse Sensor, ECG sensor, OLED display, 3D Printing</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Project Duration:</div>
+                    <div>2 months</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Category:</div>
+                    <div>Embedded Systems, IoT, Healthcare Tech</div>
+                </div>
+            </div>
+            <div class="modal-media">
+                                <img src="ECG_DOC.jpg" alt="Heart Rate Monitor Project">
+                                                <img src="working cardio-node UI.jpg" alt="Heart Rate Monitor Project">
+                <video controls>
+                    <source src="CARDIO-NODE_vid.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-media">
+                <img src="RFID_Att_pic.jpg" alt="RFID Attendance System">
+            </div>
+            <h2 class="modal-title">RFID Based Attendance System</h2>
+            <p class="modal-description">
+                Developed an automated attendance system using RFID technology to streamline record-keeping in educational institutions. The system consists of RFID cards for students, readers at entry points, and a web-based dashboard for administrators to monitor attendance in real-time and generate reports.
+            </p>
+            <div class="modal-details">
+                <div class="detail-item">
+                    <div class="detail-title">Technologies Used:</div>
+                    <div>ESP32, RFID-RC522, LCD display, EXCEL sheets,</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Project Duration:</div>
+                    <div>1 months</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Category:</div>
+                    <div>IoT, Embedded Systems</div>
+                </div>
+            </div>
+            <div class="modal-media">
+                <video controls>
+                    <source src="RFID_vid.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-media">
+                <img src="Bionic_arm_Pic.jpg" alt="Bionic Arm Project">
+            </div>
+            <h2 class="modal-title">5DOF Mechatronic Bionic Arm</h2>
+            <p class="modal-description">
+                Designed and built a 5-degree-of-freedom robotic arm that mimics human arm movements. The arm features precise servo motor control, gesture recognition capabilities, and can be programmed for repetitive tasks. The project involved mechanical design, electronics integration, and programming of the control systems.
+            </p>
+            <div class="modal-details">
+                <div class="detail-item">
+                    <div class="detail-title">Technologies Used:</div>
+                    <div>SolidWorks, Arduino, Servo Motors, </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Project Duration:</div>
+                    <div>3 weeks</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Category:</div>
+                    <div>Robotics, Mechatronics</div>
+                </div>
+            </div>
+            <div class="modal-media">
+                <video controls>
+                    <source src="bionic_vid.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-media">
+                <img src="SOLIDWORKS Premium 2023 SP0.1 - [LAMP DESIGN _] 01_07_2024 18_42_42.png" alt="3D Design Portfolio">
+            </div>
+            <h2 class="modal-title">3D Models and Designs</h2>
+            <p class="modal-description">
+                A collection of various 3D models and designs created for prototyping and production. This portfolio includes mechanical components, product designs, and architectural models. Each project demonstrates proficiency in different CAD software and an understanding of design for manufacturing principles.
+            </p>
+            <div class="modal-details">
+                <div class="detail-item">
+                    <div class="detail-title">Software Used:</div>
+                    <div>SolidWorks, AutoCAD, Blender, Shapr3D</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Project Types:</div>
+                    <div>Mechanical, Product Design, </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-title">Category:</div>
+                    <div>CAD Design, 3D Modeling</div>
+                </div>
+            </div>
+            <div class="modal-media">
+                <img src="solar_assm.JPG" alt="3D Design Examples">
+                 <img src="HRM_system.2.JPG" alt="3D Design Examples">
+                  <img src="Screenshot (34).png" alt="3D Design Examples">
+                   <img src="machine_CAD.jpg" alt="3D Design Examples">
+                    <img src="machine_CAM.jpg" alt="3D Design Examples">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalLinks = document.querySelectorAll('.project-link');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close-modal');
+            
+            // Open modal when project link is clicked
+            modalLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    }
+                });
+            });
+            
+            // Close modal when close button is clicked
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        modal.classList.remove('show');
+                        document.body.style.overflow = ''; // Enable scrolling
+                        
+                        // Pause any videos in the modal
+                        const videos = modal.querySelectorAll('video');
+                        videos.forEach(video => {
+                            video.pause();
+                        });
+                    }
+                });
+            });
+            
+            // Close modal when clicking outside the content
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = ''; // Enable scrolling
+                        
+                        // Pause any videos in the modal
+                        const videos = this.querySelectorAll('video');
+                        videos.forEach(video => {
+                            video.pause();
+                        });
+                    }
+                });
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.classList.contains('show')) {
+                            modal.classList.remove('show');
+                            document.body.style.overflow = ''; // Enable scrolling
+                            
+                            // Pause any videos in the modal
+                            const videos = modal.querySelectorAll('video');
+                            videos.forEach(video => {
+                                video.pause();
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
